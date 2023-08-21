@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    POSTS
+{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h1>POSTS</h1>
+    {% for post in posts %}
+    </br>
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">POST ID {{ post[0] }}</div>
+            <div class="card-body">
+            <h5 class="card-title">{{ post[1] }}</h5>
+            <p class="card-text">{{ post[2] }}</p>
+            <a href="/posts/{{ post[0] }}" class="btn btn-dark" >details</a>
+            </div>
+            <div class="card-footer bg-transparent border-success">{{ post[4] }} by user {{ post[3] }}</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

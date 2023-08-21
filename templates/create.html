@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CREATE POSTS
+{% endblock %}
+
+{% block body %}
+    <form action ="{{ url_for('create') }}" method = "post" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="mb-3  w-50">
+            <h1>CREATE POSTS</h1>
+            </br>
+            </br>
+            <label for="title" class="form-label">TITLE</label>
+            <input type="text" class="form-control" id="title" name = "title" placeholder="type your title here">
+        </div>
+        <div class="mb-3  w-50">
+            <label for="content" class="form-label">CONTENT</label>
+            <textarea class="form-control" id="content" rows="3" name = "content" placeholder="type your content here"></textarea>
+            <br>
+            <input class="btn btn-dark" type = "submit" value =" Submit">
+        </div>
+    </form>
+{% endblock %}

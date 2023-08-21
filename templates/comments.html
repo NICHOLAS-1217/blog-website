@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    COMMENTS
+{% endblock %}
+
+{% block body %}
+    <form action="{{ url_for('postdetails', post_id=post[0]) }}" method="post" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="mb-3  w-50">
+            <h1>{{ post[1] }}</h1>
+            </br>
+            <p>{{ post[2] }}</p>
+            </br>
+            </br>
+            <label for="comment" class="form-label">COMMENT</label>
+            <textarea name="comment" class="form-control" id="comment" rows="4" cols="50" placeholder="Add a comment"></textarea>
+            </br>
+            <input class="btn btn-dark" type = "submit" value =" Submit">
+            </br>
+            </br>
+            </br>
+            <h2>Comments</h2>
+            <ul>
+                {% for comment in comments %}
+                    <li>{{ comment[1] }} {{ comment[4] }} by user {{ comment[3] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </form>
+{% endblock %}
