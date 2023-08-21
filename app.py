@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, request, session, url_for
 from datetime import datetime
+from functools import wraps
 import mysql.connector
 
 db = mysql.connector.connect(
@@ -14,6 +15,14 @@ c = db.cursor()
 app = Flask(__name__)
 
 app.secret_key = 'heisenberg'
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'loggedin' not in session:
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/base')
 def base():
@@ -61,6 +70,7 @@ def logout():
     return redirect(url_for('login'))
 
 @app.route('/posts/create', methods = ['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -74,12 +84,14 @@ def create():
     return render_template('create.html')
 
 @app.route('/posts')
+@login_required
 def posts():
     c.execute('SELECT * FROM post')
     posts = c.fetchall()
     return render_template('posts.html', posts = posts)
 
 @app.route('/posts/<post_id>', methods=['GET', 'POST'])
+@login_required
 def postdetails(post_id):   
     post_id = request.view_args['post_id']
     c.execute('SELECT * FROM post WHERE post_ID = %s', (post_id,))
