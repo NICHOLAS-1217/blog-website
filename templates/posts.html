@@ -7,8 +7,10 @@
 {% block body %}
 <div class="d-flex flex-column justify-content-center align-items-center">
     <h1>POSTS</h1>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-1">
     {% for post in posts %}
-    </br>
+        </br>
         <div class="card text-bg-light mb-3" style="max-width: 18rem;">
             <div class="card-header">POST ID {{ post[0] }}</div>
             <div class="card-body">
@@ -20,4 +22,5 @@
         </div>
     {% endfor %}
 </div>
+
 {% endblock %}
