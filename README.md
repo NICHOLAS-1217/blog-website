@@ -4,6 +4,9 @@
 This is my first try making a blog website using flask, mysql.
 
 ## How to install and run?
-- You can have two ways to download and run this website
+- You can have two ways to install this website
     - install the zip file from the code button in this github repository
-    - use or git clone this [link](https://github.com/NICHOLAS-1217/blog-website.git) in your project folder terminal
+    - or git clone this [link](https://github.com/NICHOLAS-1217/blog-website.git) in your project folder terminal
+    - after that, don't forget to --pip install -r requirements.txt--
+- How to run?
+    - just open your terminal and write --python app.py--
